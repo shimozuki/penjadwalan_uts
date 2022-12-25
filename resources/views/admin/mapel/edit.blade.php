@@ -20,6 +20,10 @@
             <div class="col-md-12">
                 <input type="hidden" name="mapel_id" value="{{ $mapel->id }}">
                 <div class="form-group">
+                  <label for="code_mk">Kode Matakuliah</label>
+                  <input type="text" id="code_mk" name="code_mk" value="{{ $mapel->code_mk }}" class="form-control @error('code_mk') is-invalid @enderror" placeholder="{{ __('Kode Matakuliah') }}">
+                </div>
+                <div class="form-group">
                   <label for="nama_mapel">Nama Matkul</label>
                   <input type="text" id="nama_mapel" name="nama_mapel" value="{{ $mapel->nama_mapel }}" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
                 </div>

@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th>No.</th>
+                    <th>Kode Matkul</th>
                     <th>Nama Matkul</th>
                     <th>Paket</th>
                     <th>Kelompok</th>
@@ -29,6 +30,7 @@
                 @foreach ($mapel as $result => $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
+                    <td>{{ $data->code_mk }}</td>
                     <td>{{ $data->nama_mapel }}</td>
                     @if ( $data->paket_id == 9 )
                       <td>{{ 'Semua' }}</td>
@@ -70,9 +72,13 @@
           @csrf
             <div class="row">
               <div class="col-md-12">
+              <div class="form-group">
+                  <label for="code_mk">Kode Matakuliah</label>
+                  <input type="text" id="code_mk" name="code_mk" class="form-control @error('code_mk') is-invalid @enderror" placeholder="{{ __('Kode Matakuliah') }}">
+                </div>
                 <div class="form-group">
                   <label for="nama_mapel">Nama Matakuliah</label>
-                  <input type="text" id="nama_mapel" name="nama_mapel" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
+                  <input type="text" id="nama_mapel" name="nama_mapel" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Kuliah') }}">
                 </div>
                 <div class="form-group">
                   <label for="paket_id">Paket</label>
