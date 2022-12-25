@@ -70,12 +70,12 @@
       <div class="modal-body">
         <form action="{{ route('kelas.store') }}" method="post">
           @csrf
-          <!-- <div class="row">
+          <div class="row">
             <div class="col-md-12">
               <input type="hidden" id="id" name="id">
               <div class="form-group" id="form_nama"></div>
               <div class="form-group" id="form_paket"></div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="guru_id">Wali Kelas</label>
                 <select id="guru_id" name="guru_id" class="select2bs4 form-control @error('guru_id') is-invalid @enderror">
                   <option value="">-- Pilih Wali Kelas --</option>
@@ -83,9 +83,9 @@
                     <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
                   @endforeach
                 </select>
-              </div>
+              </div> -->
             </div>
-          </div> -->
+          </div>
         </div>
         <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
