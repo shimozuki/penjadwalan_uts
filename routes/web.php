@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,16 +28,27 @@ Route::get('/clear-cache', function () {
   return 'DONE';
 });
 
-Auth::routes();
-Route::get('/login/cek_email/json', 'UserController@cek_email');
-Route::get('/login/cek_password/json', 'UserController@cek_password');
-Route::post('/cek-email', 'UserController@email')->name('cek-email')->middleware('guest');
-Route::get('/reset/password/{id}', 'UserController@password')->name('reset.password')->middleware('guest');
-Route::patch('/reset/password/update/{id}', 'UserController@update_password')->name('reset.password.update')->middleware('guest');
+
+// Auth::routes();
+// Route::get('/login/cek_email/json', 'UserController@cek_email');
+// Route::get('/login/cek_password/json', 'UserController@cek_password');
+// Route::post('/cek-email', 'UserController@email')->name('cek-email')->middleware('guest');
+// Route::get('/reset/password/{id}', 'UserController@password')->name('reset.password')->middleware('guest');
+// Route::patch('/reset/password/update/{id}', 'UserController@update_password')->name('reset.password.update')->middleware('guest');
+Route::group(['middleware'=>['guest']],function (){
+  Route::get('/login/cek_email/json', 'UserController@cek_email');
+  Route::get('/login/cek_password/json', 'UserController@cek_password');
+  Route::get('login',[LoginController::class,'index'])->name('login');
+  Route::post('login',[LoginController::class,'login']);
+  Route::get('register',[RegisterController::class,'index'])->name('register');
+  Route::post('register',[RegisterController::class,'store']); 
+  Route::get('forgot-password',[ForgotPasswordController::class,'index'])->name('forgot-password');
+  Route::post('forgot-password',[ForgotPasswordController::class,'reset']);
+});
 
 Route::middleware(['auth'])->group(function () {
-  Route::get('/', 'HomeController@index')->name('home');
   Route::get('/home', 'HomeController@index')->name('home');
+  Route::post('logout',[LogoutController::class,'index'])->name('logout');
   Route::get('/jadwal/sekarang', 'JadwalController@jadwalSekarang');
   Route::get('/profile', 'UserController@profile')->name('profile');
   Route::get('/pengaturan/profile', 'UserController@edit_profile')->name('pengaturan.profile');
@@ -46,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/pengaturan/ubah-email', 'UserController@ubah_email')->name('pengaturan.ubah-email');
   Route::get('/pengaturan/password', 'UserController@edit_password')->name('pengaturan.password');
   Route::post('/pengaturan/ubah-password', 'UserController@ubah_password')->name('pengaturan.ubah-password');
+
 
   Route::middleware(['siswa'])->group(function () {
     Route::get('/jadwal/siswa', 'JadwalController@siswa')->name('jadwal.siswa');
