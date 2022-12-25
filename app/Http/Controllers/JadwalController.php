@@ -62,22 +62,27 @@ class JadwalController extends Controller
         ]);
 
         $guru = Guru::findorfail($request->guru_id);
-        Jadwal::updateOrCreate(
-            [
-                'id' => $request->jadwal_id
-            ],
-            [
-                'hari_id' => $request->hari_id,
-                'kelas_id' => $request->kelas_id,
-                'mapel_id' => $guru->mapel_id,
-                'guru_id' => $request->guru_id,
-                'jam_mulai' => $request->jam_mulai,
-                'jam_selesai' => $request->jam_selesai,
-                'ruang_id' => $request->ruang_id,
-            ]
-        );
+        $cek = Jadwal::where('jam_mulai', $request->jam_mulai)->where('kelas_id', $request->kelas_id)->where('hari_id', $request->hari_id)->first();
+        if (!empty($cek)) {
+            return redirect()->back()->with('warning', 'Maaf, Jadwal Bentrok!');
+        } else {
+            Jadwal::updateOrCreate(
+                [
+                    'id' => $request->jadwal_id
+                ],
+                [
+                    'hari_id' => $request->hari_id,
+                    'kelas_id' => $request->kelas_id,
+                    'mapel_id' => $guru->mapel_id,
+                    'guru_id' => $request->guru_id,
+                    'jam_mulai' => $request->jam_mulai,
+                    'jam_selesai' => $request->jam_selesai,
+                    'ruang_id' => $request->ruang_id,
+                ]
+            );
 
-        return redirect()->back()->with('success', 'Data jadwal berhasil diperbarui!');
+            return redirect()->back()->with('success', 'Data jadwal berhasil diperbarui!');
+        }
     }
 
     /**
