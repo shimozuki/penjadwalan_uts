@@ -18,7 +18,7 @@
                 <div class="col-md-1 mb-4"></div>
                 <div class="col-md-7">
                     <h5 class="card-title card-text mb-2">Nama : {{ $guru->nama_guru }}</h5>
-                    <h5 class="card-title card-text mb-2">NIP : {{ $guru->nip }}</h5>
+                    <h5 class="card-title card-text mb-2">NIDN : {{ $guru->nip }}</h5>
                     <h5 class="card-title card-text mb-2">No Id Card : {{ $guru->id_card }}</h5>
                     <h5 class="card-title card-text mb-2">Matakuliah : {{ $guru->mapel->nama_mapel }}</h5>
                     <h5 class="card-title card-text mb-2">Kode Jadwal : {{ $guru->kode }}</h5>

@@ -97,7 +97,7 @@
                             <canvas id="pieChartPaket" height="150"></canvas>
                         </div>
                     </div>
-                    <div class="card-body" style="margin-top: -15%;">
+                    <div class="card-body" style="margin-buttom: -15%;">
                     <table id="example1" class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>

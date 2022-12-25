@@ -69,8 +69,8 @@
                     <option value="">-- Select {{ __('Level User') }} --</option>
                     <option value="Admin">Admin</option>
                     <option value="Operator">Operator</option>
-                    <option value="Guru">Guru</option>
-                    <option value="Siswa">Siswa</option>
+                    <option value="Guru">Dosen</option>
+                    <option value="Siswa">Mahasiswa</option>
                   </select>
                   @error('role')
                     <span class="invalid-feedback" role="alert">

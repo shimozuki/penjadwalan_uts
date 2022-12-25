@@ -75,7 +75,7 @@
                         <tr>
                             <th class="ctr">Teman</th>
                             <th class="ctr">Sendiri</th>
-                            <th class="ctr">Guru</th>
+                            <th class="ctr">Dosen</th>
                         </tr>
                     </thead>
                     <tbody>

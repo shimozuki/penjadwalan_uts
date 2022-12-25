@@ -20,7 +20,7 @@
                     <th>No.</th>
                     <th>Nama</th>
                     <th>Id Card</th>
-                    <th>NIP</th>
+                    <th>NIDN</th>
                     <th>Foto</th>
                     <th>Aksi</th>
                 </tr>

@@ -70,7 +70,7 @@
       <div class="modal-body">
         <form action="{{ route('kelas.store') }}" method="post">
           @csrf
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-12">
               <input type="hidden" id="id" name="id">
               <div class="form-group" id="form_nama"></div>
@@ -85,7 +85,7 @@
                 </select>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>

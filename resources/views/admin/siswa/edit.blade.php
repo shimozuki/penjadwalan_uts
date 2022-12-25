@@ -1,5 +1,5 @@
 @extends('template_backend.home')
-@section('heading', 'Edit Siswa')
+@section('heading', 'Edit Mahasiswa')
 @section('page')
   <li class="breadcrumb-item active"><a href="{{ route('siswa.index') }}">Siswa</a></li>
   <li class="breadcrumb-item active">Edit Siswa</li>
