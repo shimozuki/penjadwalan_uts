@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-  <link rel="shrotcut icon" href="{{ asset('img/icon.png') }}">
+  <link rel="shrotcut icon" href="{{ asset('img/favicon.ico') }}">
 </head>
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <img src="{{ asset('img/') }}" width="100%" alt="Logo">
+      <img src="{{ asset('img/icon.png') }}" width="50%" alt="Logo">
     </div>
 
     <div class="login-logo" style="color: #696969;">

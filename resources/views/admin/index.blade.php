@@ -92,12 +92,12 @@
             </div>
             <div class="position-relative mb-4">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="chart-responsive">
                             <canvas id="pieChartPaket" height="150"></canvas>
                         </div>
                     </div>
-                    <div class="card-body" style="margin-buttom: -15%;">
+                    <div class="card-body" style="margin-top: -10%">
                     <table id="example1" class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
