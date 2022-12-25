@@ -20,7 +20,6 @@
                 <tr>
                     <th>No.</th>
                     <th>Kelas</th>
-                    <th>Wali Kelas</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -29,7 +28,6 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_kelas }}</td>
-                    <td>{{ $data->guru->nama_guru }}</td>
                     <td>
                         <form action="{{ route('kelas.destroy', $data->id) }}" method="post">
                             @csrf
