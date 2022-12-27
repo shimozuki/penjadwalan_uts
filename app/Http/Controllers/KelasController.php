@@ -48,28 +48,37 @@ class KelasController extends Controller
             $this->validate($request, [
                 'nama_kelas' => 'required|min:6|max:10',
                 'paket_id' => 'required',
-                'guru_id' => 'required|unique:kelas',
             ]);
         } else {
             $this->validate($request, [
-                'nama_kelas' => 'required|unique:kelas|min:6|max:10',
+                'nama_kelas' => 'required|min:6|max:10',
                 'paket_id' => 'required',
-                'guru_id' => 'required|unique:kelas',
             ]);
         }
-
-        Kelas::updateOrCreate(
-            [
-                'id' => $request->id
-            ],
-            [
-                'nama_kelas' => $request->nama_kelas,
-                'paket_id' => $request->paket_id,
-                'guru_id' => $request->guru_id,
-            ]
-        );
-
-        return redirect()->back()->with('success', 'Data kelas berhasil diperbarui!');
+        $kelas = Kelas::onlyTrashed()->get();
+        if (!empty($kelas)) {
+            Kelas::updateOrCreate(
+                [
+                    'id' => $request->id
+                ],
+                [
+                    'nama_kelas' => $request->nama_kelas,
+                    'paket_id' => $request->paket_id,
+                ]
+            );
+            return redirect()->back()->with('success', 'Data kelas berhasil diperbarui!');
+        }else {
+            Kelas::updateOrCreate(
+                [
+                    'id' => $request->id
+                ],
+                [
+                    'nama_kelas' => $request->nama_kelas,
+                    'paket_id' => $request->paket_id,
+                ]
+            );
+            return redirect()->back()->with('success', 'Data kelas berhasil diperbarui!');
+        }
     }
 
     /**
