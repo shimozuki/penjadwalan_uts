@@ -9,6 +9,7 @@ use App\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class MapelController extends Controller
 {
@@ -181,5 +182,27 @@ class MapelController extends Controller
         }
 
         return response()->json($newForm);
+    }
+    public function pilih(Request $request)
+    {
+
+        $id_mapel = $request->id;
+        $dosen = $request->id_dosen;
+        if ($id_mapel != 0) {
+            DB::beginTransaction();
+            try {
+                Mapel::where('id', $id_mapel)->update([
+                    'id_dosen' => $dosen,
+                ]);
+                Guru::where('id', $dosen)->update([
+                    'mapel' => $id_mapel
+                ]);
+                DB::commit();
+                return redirect()->back()->with('success', 'Data MataKuliah berhasil dipilih');
+            } catch (\Exception $e) {
+                DB::rollback();
+                return redirect()->back()->with('danger', $e);
+            }
+        }
     }
 }

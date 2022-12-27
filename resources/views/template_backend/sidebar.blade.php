@@ -16,6 +16,20 @@
                 <p class="text-white">{{Auth::user()->role}}</p>
             </center>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            @if (Auth::user()->role == 'Dosen')
+            <li class="nav-item has-treeview">
+                    <a href="{{ url('/') }}" class="nav-link" id="Home">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+            <li class="nav-item">
+                    <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                        <i class="fas fa-book nav-icon"></i>
+                        <p>Data Matkul</p>
+                    </a>
+                </li>
+                @endif
                 @if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Operator')
 
                 <li class="nav-item has-treeview" id="liDashboard">
@@ -279,12 +293,12 @@
                     </a>
                 </li>
                 @else
-                <li class="nav-item has-treeview">
+                <!-- <li class="nav-item has-treeview">
                     <a href="{{ url('/') }}" class="nav-link" id="Home">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
-                </li>
+                </li> -->
                 @endif
             </ul>
         </nav>

@@ -146,4 +146,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
       Route::resource('/user', 'UserController');
     });
   });
+  Route::post('/mapel/pilih', 'MapelController@pilih')->name('pilih');
+  Route::resource('/mapel', 'MapelController');
 });

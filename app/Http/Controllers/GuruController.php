@@ -9,6 +9,7 @@ use App\Mapel;
 use App\Jadwal;
 use App\Absen;
 use App\Kehadiran;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,6 +18,7 @@ use App\Imports\GuruImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Nilai;
+use Illuminate\Support\Facades\DB;
 
 class GuruController extends Controller
 {
@@ -70,25 +72,38 @@ class GuruController extends Controller
                 $nameFoto = 'uploads/guru/23171022042020_female.jpg';
             }
         }
+        DB::beginTransaction();
+        try {
+            $guru = Guru::create([
+                'id_card' => $request->id_card,
+                'nip' => $request->nip,
+                'nama_guru' => $request->nama_guru,
+                'mapel_id' => $request->mapel_id,
+                'kode' => $request->kode,
+                'jk' => $request->jk,
+                'telp' => $request->telp,
+                'tmp_lahir' => $request->tmp_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'foto' => $nameFoto
+            ]);
+            Nilai::create([
+                'guru_id' => $guru->id
+            ]);
+            User::create([
+                'name' => $request->nama_guru,
+                'email' => $request->nip."@univeristastenologisumbawa.com",
+                'password' => Hash::make($request->nip),
+                'role' => 'Dosen',
+                'id_card' => $request->id_card,
+            ]);
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with($e);
+        }
 
-        $guru = Guru::create([
-            'id_card' => $request->id_card,
-            'nip' => $request->nip,
-            'nama_guru' => $request->nama_guru,
-            'mapel_id' => $request->mapel_id,
-            'kode' => $request->kode,
-            'jk' => $request->jk,
-            'telp' => $request->telp,
-            'tmp_lahir' => $request->tmp_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'foto' => $nameFoto
-        ]);
-
-        Nilai::create([
-            'guru_id' => $guru->id
-        ]);
-
-        return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
+       
     }
 
     /**
