@@ -31,7 +31,8 @@ class GuruController extends Controller
     {
         $mapel = Mapel::orderBy('nama_mapel')->get();
         $max = Guru::max('id_card');
-        return view('admin.guru.index', compact('mapel', 'max'));
+        $guru = Guru::all();
+        return view('admin.guru.index', compact('mapel', 'max', 'guru'));
     }
 
     /**
@@ -64,7 +65,7 @@ class GuruController extends Controller
             $foto = $request->foto;
             $new_foto = date('siHdmY') . "_" . $foto->getClientOriginalName();
             $foto->move('uploads/guru/', $new_foto);
-            $nameFoto = 'uploads/guru/' . $new_foto;
+            $nameFoto = 'uploads/indexguru/' . $new_foto;
         } else {
             if ($request->jk == 'L') {
                 $nameFoto = 'uploads/guru/35251431012020_male.jpg';

@@ -96,6 +96,20 @@
                 <input type="text" id="nama_mapel" name="nama_mapel" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Kuliah') }}">
               </div>
               <div class="form-group">
+                <label for="paket_id">Semester</label>
+                <select id="semester" name="semester" class="form-control @error('paket_id') is-invalid @enderror select2bs4">
+                  <option value="">-- Pilih Semester --</option>
+                  <option value="1">I</option>
+                  <option value="2">II</option>
+                  <option value="3">III</option>
+                  <option value="4">IV</option>
+                  <option value="5">V</option>
+                  <option value="6">VI</option>
+                  <option value="7">VII</option>
+                  <option value="8">VIII</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="paket_id">Paket</label>
                 <select id="paket_id" name="paket_id" class="form-control @error('paket_id') is-invalid @enderror select2bs4">
                   <option value="">-- Pilih Paket Matakuliah --</option>

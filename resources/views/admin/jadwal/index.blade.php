@@ -142,7 +142,7 @@
                   <select id="guru_id" name="guru_id" class="form-control @error('guru_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Kode Matakuliah --</option>
                       @foreach ($guru as $data)
-                          <option value="{{ $data->id }}">{{ $data->kode }}</option>
+                          <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
                       @endforeach
                   </select>
                 </div>
