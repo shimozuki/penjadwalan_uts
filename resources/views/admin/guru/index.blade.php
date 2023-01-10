@@ -157,10 +157,6 @@
                                     <option value="P">Perempuan</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="telp">Nomor Telpon/HP</label>
-                                <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
-                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -191,12 +187,11 @@
                             }
                             @endphp
                             <div class="form-group">
-                                <label for="id_card">Nomor ID Card</label>
-                                <input type="text" id="id_card" name="id_card" maxlength="5" onkeypress="return inputAngka(event)" value="{{ $id_card }}" class="form-control @error('id_card') is-invalid @enderror" readonly>
+                                <input type="hidden" id="id_card" name="id_card" maxlength="5" onkeypress="return inputAngka(event)" value="{{ $id_card }}" class="form-control @error('id_card') is-invalid @enderror" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="kode">Kode Jadwal</label>
-                                <input type="text" id="kode" name="kode" maxlength="3" onkeyup="this.value = this.value.toUpperCase()" class="form-control @error('kode') is-invalid @enderror">
+                            <label for="telp">Nomor Telpon/HP</label>
+                                <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
                             </div>
                             <div class="form-group">
                                 <label for="foto">File input</label>
