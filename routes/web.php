@@ -47,7 +47,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
   });
 
   Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
     Route::post('logout', [LogoutController::class, 'index'])->name('logout');
     Route::get('/jadwal/sekarang', 'JadwalController@jadwalSekarang');
     Route::get('/profile', 'UserController@profile')->name('profile');
