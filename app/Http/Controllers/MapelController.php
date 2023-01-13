@@ -52,25 +52,25 @@ class MapelController extends Controller
             'kelompok' => 'required',
             'code_mk' => 'required',
         ]);
-        $cek = Mapel::where('code_mk', $request->code_mk);
+        $cek = Mapel::where('code_mk', $request->code_mk)->first();
         if (!empty($cek)) {
             return redirect()->back()->with('info', 'Data Matakuliah Sudah Ada');
+        } else {
+            Mapel::updateOrCreate(
+                [
+                    'id' => $request->mapel_id
+                ],
+                [
+                    'nama_mapel' => $request->nama_mapel,
+                    'paket_id' => $request->paket_id,
+                    'kelompok' => $request->kelompok,
+                    'code_mk'   => $request->code_mk,
+                    'semester' => $request->semester,
+                ]
+            );
+
+            return redirect()->back()->with('success', 'Data mapel berhasil diperbarui!');
         }
-
-        Mapel::updateOrCreate(
-            [
-                'id' => $request->mapel_id
-            ],
-            [
-                'nama_mapel' => $request->nama_mapel,
-                'paket_id' => $request->paket_id,
-                'kelompok' => $request->kelompok,
-                'code_mk'   => $request->code_mk,
-                'semester' => $request->semester,
-            ]
-        );
-
-        return redirect()->back()->with('success', 'Data mapel berhasil diperbarui!');
     }
 
     /**
