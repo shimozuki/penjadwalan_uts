@@ -48,13 +48,6 @@ class RuanganController extends Controller
         // print_r($request->id);
         // echo "</pre>"; 
         if (!empty($kelas)) {
-            Ruang::where('id', $request->id)->update(
-                [
-                    'nama_ruang' => $request->nama_ruang
-                ]
-            );
-            return redirect()->back()->with('success', 'Data Ruangan berhasil diperbarui!');
-        }else {
             Ruang::updateOrCreate(
                 [
                     'id' => $request->id
@@ -62,7 +55,14 @@ class RuanganController extends Controller
                 [
                     'nama_ruang' => $request->nama_ruang
                 ]
-            )->where('id', $request->id);
+            );
+            return redirect()->back()->with('success', 'Data Ruangan berhasil diperbarui!');
+        }else {
+            Ruang::where('id', $request->id)->update(
+                [
+                    'nama_ruang' => $request->nama_ruang
+                ]
+            );
             return redirect()->back()->with('success', 'Data Ruangan berhasil diperbarui!');
         }
     }
