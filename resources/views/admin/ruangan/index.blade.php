@@ -187,7 +187,7 @@
     function getEditRuang(id) {
       var parent = id;
       var form_paket = (`
-        <input type="text" id="id_ruang" onkeyup="this.value = this.value.toUpperCase()" name='nama_ruang' class="form-control @error('nama_ruang') is-invalid @enderror">
+        <input type="hidden" id="id_ruang" onkeyup="this.value = this.value.toUpperCase()" name='nama_ruang' class="form-control @error('nama_ruang') is-invalid @enderror">
         <label for="nama_ruang">Nama Ruangan</label>
         <input type='text' id="nama_ruang" onkeyup="this.value = this.value.toUpperCase()" name='nama_ruang' class="form-control @error('nama_ruang') is-invalid @enderror" placeholder="{{ __('Nama Ruangan') }}">
       `);

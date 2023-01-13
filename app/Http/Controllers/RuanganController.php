@@ -44,26 +44,26 @@ class RuanganController extends Controller
             ]);
         }
         $kelas = Ruang::where('id', $request->id)->get();
-        echo "<pre>"; 
-        print_r($kelas);
-        echo "</pre>"; 
-        // if (!empty($kelas)) {
-        //     Ruang::updateOrCreate(
-        //         [
-        //             'nama_ruang' => $request->nama_ruang
-        //         ]
-        //     );
-        //     return redirect()->back()->with('success', 'Data Ruangan berhasil diperbarui!');
-        // }else {
-        //     Ruang::updateOrCreate(
-        //         [
-        //             'id' => $request->id
-        //         ],
-        //         [
-        //             'nama_ruang' => $request->nama_ruang
-        //         ]
-        //     );
-        //     return redirect()->back()->with('success', 'Data Ruangan berhasil diperbarui!');
-        // }
+        // echo "<pre>"; 
+        // print_r($request->id);
+        // echo "</pre>"; 
+        if (!empty($kelas)) {
+            Ruang::where('id', $request->id)->update(
+                [
+                    'nama_ruang' => $request->nama_ruang
+                ]
+            );
+            return redirect()->back()->with('success', 'Data Ruangan berhasil diperbarui!');
+        }else {
+            Ruang::updateOrCreate(
+                [
+                    'id' => $request->id
+                ],
+                [
+                    'nama_ruang' => $request->nama_ruang
+                ]
+            )->where('id', $request->id);
+            return redirect()->back()->with('success', 'Data Ruangan berhasil diperbarui!');
+        }
     }
 }
