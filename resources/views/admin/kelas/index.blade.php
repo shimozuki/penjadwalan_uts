@@ -9,7 +9,7 @@
         <div class="card-header">
           <h3 class="card-title">
               <button type="button" class="btn btn-primary btn-sm" onclick="getCreateKelas()" data-toggle="modal" data-target="#form-kelas">
-                  <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Kelas
+                  <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Kelas
               </button>
           </h3>
         </div>
@@ -32,9 +32,6 @@
                         <form action="{{ route('kelas.destroy', $data->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="button" class="btn btn-info btn-sm" onclick="getSubsSiswa({{$data->id}})" data-toggle="modal" data-target=".view-siswa">
-                              <i class="nav-icon fas fa-users"></i> &nbsp; View Siswa
-                            </button>
                             <button type="button" class="btn btn-info btn-sm" onclick="getSubsJadwal({{$data->id}})" data-toggle="modal" data-target=".view-jadwal">
                               <i class="nav-icon fas fa-calendar-alt"></i> &nbsp; View Jadwal
                             </button>
@@ -214,7 +211,8 @@
       var parent = id;
       var form_paket = (`
         <input type="hidden" id="paket_id" name="paket_id">
-        <input type="hidden" id="nama_kelas" name="nama_kelas">
+        <label for="nama_kelas">Nama Kelas</label>
+        <input type='text' id="nama_kelas" onkeyup="this.value = this.value.toUpperCase()" name='nama_kelas' class="form-control @error('nama_kelas') is-invalid @enderror" placeholder="{{ __('Nama Kelas') }}">
       `);
       $.ajax({
         type:"GET",

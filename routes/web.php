@@ -144,6 +144,10 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
       Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');
       Route::get('/predikat', 'NilaiController@create')->name('predikat');
       Route::resource('/user', 'UserController');
+      Route::get('ruangan', 'RuanganController@index')->name('ruangan.index');
+      Route::get('/ruangan/edit/json', 'RuanganController@getEdit');
+      Route::delete('ruangan/kill/{id}', 'RuanganController@destroy')->name('ruangan.kill');
+      Route::resource('/ruangan', 'RuanganController');
     });
   });
   Route::post('/mapel/pilih', 'MapelController@pilih')->name('pilih');

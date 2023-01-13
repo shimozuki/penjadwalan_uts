@@ -50,8 +50,12 @@ class MapelController extends Controller
             'nama_mapel' => 'required',
             'paket_id' => 'required',
             'kelompok' => 'required',
-            'code_mk' => 'required'
+            'code_mk' => 'required',
         ]);
+        $cek = Mapel::where('code_mk', $request->code_mk);
+        if (!empty($cek)) {
+            return redirect()->back()->with('info', 'Data Matakuliah Sudah Ada');
+        }
 
         Mapel::updateOrCreate(
             [
@@ -62,6 +66,7 @@ class MapelController extends Controller
                 'paket_id' => $request->paket_id,
                 'kelompok' => $request->kelompok,
                 'code_mk'   => $request->code_mk,
+                'semester' => $request->semester,
             ]
         );
 

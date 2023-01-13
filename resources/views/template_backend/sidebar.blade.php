@@ -80,6 +80,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('ruangan.index') }}" class="nav-link" id="DatRuangan">
+                        <i class="fas fa-university nav-icon"></i>
+                        <p>Data Ruangan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('jadwal.index') }}" class="nav-link" id="DataJadwal">
                         <i class="fas fa-calendar-alt nav-icon"></i>
                         <p>Data Jadwal</p>

@@ -10,7 +10,7 @@ class Mapel extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['id', 'nama_mapel', 'paket_id', 'kelompok', 'code_mk'];
+    protected $fillable = ['id', 'nama_mapel', 'paket_id', 'kelompok', 'code_mk', 'semester'];
 
     public function paket()
     {

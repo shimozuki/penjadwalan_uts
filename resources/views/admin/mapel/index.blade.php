@@ -23,6 +23,7 @@
             <th>Nama Matkul</th>
             <th>Paket</th>
             <th>Kelompok</th>
+            <th>Semester</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -38,6 +39,7 @@
             <td>{{ $data->paket->ket }}</td>
             @endif
             <td>{{ $data->kelompok }}</td>
+            <td>{{ $data->semester}}</td>
             <td>
               @if(Auth::user()->role == 'Dosen') 
               <form action="{{ route('pilih') }}" method="post">
